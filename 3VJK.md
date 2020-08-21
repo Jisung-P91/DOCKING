@@ -4,6 +4,8 @@ This is mostly repetition of the tutorial provided at
 
 > https://ringo.ams.stonybrook.edu/index.php/2020_DOCK_tutorial_1_with_PDBID_3VJK
 
+## Prep work
+
 1) Navigate to the DOCK folder
 
 `cd /Volumes/JP_External/DOCK/dock6`
@@ -21,4 +23,3 @@ This is mostly repetition of the tutorial provided at
 4) Download your PDB file from
 
 > https://www.rcsb.org/structure/3vjk
-
