@@ -23,3 +23,60 @@ This is mostly repetition of the tutorial provided at
 4) Download your PDB file from
 
 > https://www.rcsb.org/structure/3vjk
+
+## Receptor preparation
+
+### Chimeras: Open 3VJK.pdb that you downloaded
+
+     Select -> Chain -> B 
+     
+     Actions -> Atoms/ Bonds -> Delete
+     
+     Select -> Residue -> All nonstandard
+     
+     Actions -> Atoms/ Bonds -> Delete
+     
+     File -> Save Mol2 -> "3VJK_rec_woH.mol2"
+
+### Adding hydrogens and charges
+
+     Structure Editing -> Add H -> Ok
+     
+     Structure Editing -> Add Charge -> (AM1BCC charges should be selected) -> Ok
+     
+     Save this as a mol2 file "3VJK_rec_dockprep.mol2" and move it to the directory "001.structure"
+
+## Ligand preparation
+
+     Open the receptor pdb file
+
+     Select->residue->M-51
+     
+     Select->invert
+      
+     Actions->Atoms/Bonds->Delete 
+     
+     File->save as mol2 ->3VJK_ligand_noH.mol2
+
+### Adding hydrogens and charges
+
+     Tools->Structure editing-> add H
+     
+     Tools->Structure editing-> Add Charge 
+     
+## Surface Generation & Sphere Selection
+
+### Sphere generation
+
+In Chimera open "3VJK_rec_woH.mol2"
+
+     Actions -> Surface -> Show
+     
+     Tools -> Structure Editing -> Write DMS -> "3VJK_rec_surface.dms"
+     
+Move this to the directory "002.surface_spheres"
+
+
+### Sphere selection
+
+We need to create INSPH file in the bin 
