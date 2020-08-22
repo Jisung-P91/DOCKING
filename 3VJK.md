@@ -103,7 +103,7 @@ Then, run:
 
 You should find 3VJK_receptor_woH.sph in the bin directory
 
-Now, to find a subset of these spheres that overlap closely with the ligand, we will run a sphere_selector script:
+Now, to find a subset of these spheres that overlap closely with the ligand (within 10 angstroms), we will run a sphere_selector script:
 
 `./sphere_selector 3VJK_receptor_woH.sph ../3VJK/001.structure/3VJK_ligand_with_H.mol2 10.0`
 
