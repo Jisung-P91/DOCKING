@@ -18,7 +18,7 @@ This is mostly repetition of the tutorial provided at
 
 `cd 3VJK`
 
- `mkdir 001.structure 002.surface_spheres 003.gridbox 004.dock 005.virtual_screen 006.virtual_screen_mpi 007.cartesianmin 008.rescore`
+`mkdir 001.structure 002.surface_spheres 003.gridbox 004.dock 005.virtual_screen 006.virtual_screen_mpi 007.cartesianmin 008.rescore`
  
 4) Download your PDB file from
 
@@ -79,4 +79,32 @@ Move this to the directory "002.surface_spheres"
 
 ### Sphere selection
 
-We need to create INSPH file in the bin 
+We need to create INSPH file in the bin directory by:
+
+`vim INSPH`
+
+Then, in the INSPH file, write the following script:
+
+This script allows you to create an output file that contains "sphere information" in the receptor. The spheres are basically representations of empty space inside the protein. You want to make sure that these spheres overlap with each other but not with the receptor.
+
+      3VJK_rec_surface.dms
+      R 
+      X 
+      0.0 
+      4.0 
+      1.4 
+      3VJK_receptor_woH.sph
+
+Before running the sphgen, move 3VJK_rec_surface.dms to the bin directory
+
+Then, run:
+
+`./sphgen -i INSPH -o OUTSPH`
+
+You should find 3VJK_receptor_woH.sph in the bin directory
+
+Now, to find a subset of these spheres that overlap closely with the ligand, we will run a sphere_selector script:
+
+`./sphere_selector 3VJK_receptor_woH.sph ../3VJK/001.structure/3VJK_ligand_with_H.mol2 10.0`
+
+Since the ligand.mol2 file is in the 001.structure directory, we needed to specify the directory
