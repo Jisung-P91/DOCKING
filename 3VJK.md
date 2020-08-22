@@ -4,7 +4,7 @@ This is mostly repetition of the tutorial provided at
 
 > https://ringo.ams.stonybrook.edu/index.php/2020_DOCK_tutorial_1_with_PDBID_3VJK
 
-## Prep work
+## Step 1: Prep work
 
 1) Navigate to the DOCK folder
 
@@ -24,7 +24,7 @@ This is mostly repetition of the tutorial provided at
 
 > https://www.rcsb.org/structure/3vjk
 
-## Receptor preparation
+## Step 2: Receptor preparation
 
 ### Chimeras: Open 3VJK.pdb that you downloaded
 
@@ -46,7 +46,7 @@ This is mostly repetition of the tutorial provided at
      
      Save this as a mol2 file "3VJK_rec_dockprep.mol2" and move it to the directory "001.structure"
 
-## Ligand preparation
+## Step 3: Ligand preparation
 
      Open the receptor pdb file
 
@@ -64,7 +64,7 @@ This is mostly repetition of the tutorial provided at
      
      Tools->Structure editing-> Add Charge 
      
-## Surface Generation & Sphere Selection
+## Step 4: Surface Generation & Sphere Selection
 
 ### Sphere generation
 
