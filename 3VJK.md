@@ -81,7 +81,7 @@ Move this to the directory "002.surface_spheres"
 
 We need to create INSPH file in the bin directory by:
 
-`vim INSPH`
+`vi INSPH`
 
 Then, in the INSPH file, write the following script:
 
@@ -94,6 +94,8 @@ This script allows you to create an output file that contains "sphere informatio
       4.0 
       1.4 
       3VJK_receptor_woH.sph
+
+Note, to save and exit the vim command, hit ESC and type :wq
 
 Before running the sphgen, move 3VJK_rec_surface.dms to the bin directory
 
