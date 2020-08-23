@@ -129,7 +129,7 @@ Then, write the following script lines:
 
 Then, navigate to the bin directory and run:
 
-`./show box`
+`./showbox`
 
 In the bin folder, 3VJK.box.pdb should be generated
 
