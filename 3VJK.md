@@ -110,3 +110,27 @@ Now, to find a subset of these spheres that overlap closely with the ligand (wit
 `./sphere_selector 3VJK_receptor_woH.sph ../3VJK/001.structure/3VJK_ligand_with_H.mol2 10.0`
 
 Since the ligand.mol2 file is in the 001.structure directory, we needed to specify the directory
+
+## Step 5: Generation of a box and grid
+
+### Box generation
+
+First, go to 003.gridbox and make an input file that contains parameters for the box
+
+`vi showbox.in`
+
+Then, write the following script lines:
+
+    Y    #generate box#
+    8.0    #how many angstroms the box edges should be from the spheres#
+    ./../002.surface_spheres/select_spheres.sph     #the location of the selected spheres#
+    1 
+    3VJK.box.pdb     #name of the output file#
+
+Then, navigate to the bin directory and run:
+
+`./show box`
+
+In the bin folder, 3VJK.box.pdb should be generated
+
+### Grid generation
