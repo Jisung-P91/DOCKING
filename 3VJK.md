@@ -45,6 +45,10 @@ This is mostly repetition of the tutorial provided at
      Structure Editing -> Add Charge -> (AM1BCC charges should be selected) -> Ok
      
      Save this as a mol2 file "3VJK_rec_dockprep.mol2" and move it to the directory "001.structure"
+     
+     NOTE: You can execute the same job by Tools -> Structure editing -> Dock Prep. Some cautions must be taken when carrying out this function as noted by UCSF
+     
+     team. http://www.cgl.ucsf.edu/chimera/1.2199/docs/UsersGuide/framecontrib.html and follow the steps as outlined https://www.youtube.com/watch?v=sx12c6qJl7M&list=PL9lTwqZujwXg5UQsdkZEw8STJ6NF1u3l-&index=2
 
 ## Step 3: Ligand preparation
 
@@ -79,7 +83,7 @@ Move this to the directory "002.surface_spheres"
 
 ### Sphere selection
 
-We need to create INSPH file in the bin directory by:
+We need to create INSPH file in the directory by:
 
 `vi INSPH`
 
@@ -97,17 +101,22 @@ This script allows you to create an output file that contains "sphere informatio
 
 Note, to save and exit the vim command, hit ESC and type :wq
 
-Before running the sphgen, move 3VJK_rec_surface.dms to the bin directory
+Before running the sphgen, move 3VJK_rec_surface.dms to the bin directory 
 
-Then, run:
+(To avoid this step, in your 002.surface_spheres directory, type the following)
 
-`./sphgen -i INSPH -o OUTSPH`
+`export DOCK_HOME="/Volumes/JP_External/DOCK/dock6"`
+`export PATH=$PATH":$DOCK_HOME/bin"
 
-You should find 3VJK_receptor_woH.sph in the bin directory
+Then run:
+
+`sphgen -i INSPH -o OUTSPH` (instead of .\sphgen -i INSPH -o OUTSPH)
+
+You should find 3VJK_receptor_woH.sph in your directory.
 
 Now, to find a subset of these spheres that overlap closely with the ligand (within 10 angstroms), we will run a sphere_selector script:
 
-`./sphere_selector 3VJK_receptor_woH.sph ../3VJK/001.structure/3VJK_ligand_with_H.mol2 10.0`
+`sphere_selector 3VJK_receptor_woH.sph ../001.structure/3VJK_ligand_with_H.mol2 10.0`
 
 Since the ligand.mol2 file is in the 001.structure directory, we needed to specify the directory
 
@@ -127,10 +136,46 @@ Then, write the following script lines:
     1 
     3VJK.box.pdb     #name of the output file#
 
-Then, navigate to the bin directory and run:
+Then, run:
 
-`./showbox`
+`showbox < showbox.in`
 
-In the bin folder, 3VJK.box.pdb should be generated
+In the 003.gridbox folder, 3VJK.box.pdb should be generated
 
 ### Grid generation
+
+In the 003.gridbox folder, create grid.in
+
+`vi grid.in`
+
+Then, write the following script lines:
+
+compute_grids                             yes
+grid_spacing                              0.4
+output_molecule                           no
+contact_score                             no
+energy_score                              yes
+energy_cutoff_distance                    9999
+atom_model                                a
+attractive_exponent                       6
+repulsive_exponent                        9
+distance_dielectric                       yes
+dielectric_factor                         4   
+bump_filter                               yes
+bump_overlap                              0.75
+receptor_file                             ../001.structure/3VJK_rec_woH.mol2
+box_file                                  3VJK.box.pdb
+vdw_definition_file                       /Volumes/JP_External/DOCK/dock6/parameters/vdw_AMBER_parm99.defn
+score_grid_prefix                         grid
+
+Then, run the following
+
+`grid -i grid.in -o gridinfo.out`
+
+This will take time and you can actually see the progress by opening the gridinfo.out
+
+At the end, you should see three new files generates: grid.bmp, grid.nrg, gridinfo.out
+
+
+
+
