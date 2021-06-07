@@ -105,9 +105,9 @@ Before running the sphgen, move 3VJK_rec_surface.dms to the bin directory
 
 (To avoid this step, in your 002.surface_spheres directory, type the following)
 
-`export DOCK_HOME="/Volumes/JP_External/DOCK/dock6"'
+`export DOCK_HOME="/Volumes/JP_External/DOCK/dock6"`
 
-`export PATH=$PATH":$DOCK_HOME/bin"'
+`export PATH=$PATH":$DOCK_HOME/bin"`
 
 Then run:
 
